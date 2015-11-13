@@ -96,7 +96,7 @@ As a quick test, you can use the GET operations directly from the browser:
 Run a Test
 ----------
 
-1) change to cxfjpa directory
+1) change to cxfhibernate directory
 
 	cd fuse-cxf-hibernate-xa/cxfhibernate
 
