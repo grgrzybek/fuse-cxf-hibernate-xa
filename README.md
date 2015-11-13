@@ -134,3 +134,42 @@ To remove the bundle we installed, you can simply uninstall the feature:
 1) uninstall the feature
 
 	features:uninstall hibernate-jpa-example
+
+Fabric Install
+--------------
+
+To install this example into a fabric environment, ensure the build code is in a maven repository accessible by your fabric:
+
+1) Create a new profile with karaf as the parent
+
+	profile-create --parents karaf --version 77.02 hibernate-cxfxa
+
+2) Add the feature repositories to the profile
+
+	profile-edit --repositories mvn:org.mrobson.example.hibernatetx/features/1.0-SNAPSHOT/xml/features hibernate-cxfxa 77.02
+	profile-edit --repositories mvn:org.jboss.fuse/jboss-fuse/6.1.0.redhat-379/xml/features hibernate-cxfxa 77.02
+
+3) Add the feature to the profile
+	
+	profile-edit --features hibernate-jpa-example hibernate-cxfxa 77.02
+
+4) Add the JDBC Driver Bundle to the profile
+
+	profile-edit --bundles wrap:mvn:com.oracle/ojdbc6/12.1.0.1 hibernate-cxfxa 77.02
+
+5) Assign to profile to a container
+
+	container-add-profile fuse-services1 hibernate-cxfxa
+
+6) Verify deployment
+
+	JBossFuse:admin@root> container-list 
+	[id]                           [version] [connected] [profiles]                                         [provision status]
+	fuse-services2                 77.02     true        default, hibernate-cxfxa                           success
+
+	Fabric8:admin@fuse-services2> osgi:list
+	[1942] [Active     ] [Created     ] [   60] hibernatetx :: CXF Hibernate (1.0.0.SNAPSHOT)
+	[1943] [Active     ] [Created     ] [   60] hibernatetx :: Datamodel (1.0.0.SNAPSHOT)
+	[1944] [Active     ] [Created     ] [   60] hibernatetx :: XA-Datasource (1.0.0.SNAPSHOT)
+
+7) Done!
