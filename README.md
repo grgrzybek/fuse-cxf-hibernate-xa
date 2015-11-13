@@ -1,14 +1,14 @@
-﻿CXF JPA XA: demonstrates RESTful web services with CXF and JPA Persistence with XA Transactions
+﻿CXF Hibernate XA: demonstrates RESTful web services with CXF and Hibernate Persistence with XA Transactions
 ===============================================================================================
 Author: Matt Robson 
 
-Technologies: Fuse, OSGi, CXF, OpenJPA, Blueprint, Karaf Features, Fuse BOM, Aries Auto Enlist XA Transactions, Swagger, JSON, ExceptionMapper 
+Technologies: Fuse, OSGi, CXF, Hibernate, Blueprint, Karaf Features, Fuse BOM, Aries Auto Enlist XA Transactions, Swagger, JSON, ExceptionMapper 
 
 Product: Fuse 6.1 
 
 Breakdown
 ---------
-This code example shows how to leverage RESTful (JAX-RS) web services using CXF and persist Entities using OpenJPA. It demonstrates how to wire an EntityManager to a JPA Context and on to a Service. It also makes use of Aries Auto Enlistment for XA Transactions.  Other interesting aspects include the use of the Fuse BOM, Karaf Features, Blueprint Placeholders, Swagger and  ExceptionMapper.
+This code example shows how to leverage RESTful (JAX-RS) web services using CXF and persist Entities using Hibernate. It demonstrates how to wire an EntityManager to a JPA Context and on to a Service. It also makes use of Aries Auto Enlistment for XA Transactions.  Other interesting aspects include the use of the Fuse BOM, Karaf Features, Blueprint Placeholders, Swagger and  ExceptionMapper.
 
 For more information see:
 
@@ -27,11 +27,11 @@ Build and Deploy
 
 1) clone this project
 
-	git clone https://github.com/mrobson/fuse-cxf-jpa-xa.git
+	git clone https://github.com/mrobson/fuse-cxf-hibernate-xa.git
 
 2) change to project directory 
 
-	cd fuse-cxf-jpa-xa
+	cd fuse-cxf-hibernate-xa
 
 3) update your username and password
 
@@ -61,18 +61,18 @@ From the Karaf console:
 
 8) add the features file
 
-	features:addurl mvn:org.mrobson.example.distributedtx/features/1.0-SNAPSHOT/xml/features
+	features:addurl mvn:org.mrobson.example.hibernatetx/features/1.0-SNAPSHOT/xml/features
 
 9) install
 
-	features:install distributedtx-jpa-example
+	features:install hibernate-jpa-example
 
 10) verify
 
 	osgi:list
-	[ 819] [Active     ] [Created     ] [       ] [  100] distributedtx :: XA-Datasource (1.0.0.SNAPSHOT)
-	[ 820] [Active     ] [            ] [       ] [  110] distributedtx :: Datamodel (1.0.0.SNAPSHOT)
-	[ 821] [Active     ] [Created     ] [       ] [  120] distributedtx :: CXF JPA (1.0.0.SNAPSHOT)
+	[ 329] [Active     ] [Created     ] [       ] [   90] hibernatetx :: XA-Datasource (1.0.0.SNAPSHOT)
+	[ 330] [Active     ] [            ] [       ] [   95] hibernatetx :: Datamodel (1.0.0.SNAPSHOT)
+	[ 331] [Active     ] [Created     ] [       ] [  100] hibernatetx :: CXF Hibernate (1.0.0.SNAPSHOT)
 
 Usage
 -----
@@ -83,35 +83,35 @@ You can verify your CXF web services are available at:
 
 With a correct deployment, this example has an endpoint address of:
 
-	http://localhost:8181/cxf/jpatx/
+	http://localhost:8181/cxf/hibernatetx/
 
 To view the WADL, you can use the following address:
 
-	http://localhost:8181/cxf/jpatx/?_wadl
+	http://localhost:8181/cxf/hibernatetx/?_wadl
 
 As a quick test, you can use the GET operations directly from the browser:
 
-	http://localhost:8181/cxf/jpatx/person/findById/1
+	http://localhost:8181/cxf/hibernatetx/person/findById/1
 
 Run a Test
 ----------
 
 1) change to cxfjpa directory
 
-	cd fuse-cxf-jpa-xa/cxfjpa
+	cd fuse-cxf-hibernate-xa/cxfhibernate
 
 2) run included test which persists a person and then looks up that person
 
-mvn -Dtest=PersonTest test
+	mvn -Dtest=PersonTest test
 
-Note: reference json file can be found at: cxfjpa/src/test/resources/person.json
+Note: reference json file can be found at: cxfhibernate/src/test/resources/person.json
 
 Make it Fail
 ------------
 
 To test transaction rollback (and see the ExceptionMapper in action) , you can make a request fail.
 
-From fuse-cxf-jpa-xa/cxfjpa:
+From fuse-cxf-hibernate-xa/cxfhibernate:
 
 	vi src/test/resources/person.json
 
@@ -133,4 +133,4 @@ To remove the bundle we installed, you can simply uninstall the feature:
 
 1) uninstall the feature
 
-	features:uninstall distributedtx-jpa-example
+	features:uninstall hibernate-jpa-example
