@@ -37,28 +37,24 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
-			<version>4.2.9.Final</version>
+			<!--version>4.2.9.Final</version-->
 		</dependency>
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-osgi</artifactId>
-            <version>4.2.9.Final</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-envers</artifactId>
-            <version>4.2.9.Final</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-entitymanager</artifactId>
-            <version>4.2.9.Final</version>
-            <scope>provided</scope>
-        </dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-osgi</artifactId>
+			<!--version>4.2.9.Final</version-->
+		</dependency>
+			<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-envers</artifactId>
+			<!--version>4.2.9.Final</version-->
+		</dependency>
+			<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<!--version>4.2.9.Final</version-->
+		</dependency>
 	</dependencies>
-
 	<build>
 		<plugins>
 			<plugin>
@@ -71,13 +67,13 @@
 <!-- 						<Bundle-Activator>org.mrobson.example.hibernatetx.activator.Activator</Bundle-Activator>						
  -->						<Import-Package>
 							javax.persistence;version="[2.0,2.1)",
-            				javax.persistence.criteria;version="[2.0,2.1)",
-            				javax.sql,
-            				org.hibernate;version="[4.2,4.3)",
-            				org.hibernate.proxy;version="[4.2,4.3)",
-           					javassist.util.proxy,
-            				org.hibernate.ejb;version="[4.2,5)"
-            				org.hibernate.proxy;version="[4.2,4.3)",
+							javax.persistence.criteria;version="[2.0,2.1)",
+							javax.sql,
+							org.hibernate;version="[4.2,4.3)",
+							org.hibernate.proxy;version="[4.2,4.3)",
+							javassist.util.proxy,
+							org.hibernate.ejb;version="[4.2,5)"
+							org.hibernate.proxy;version="[4.2,4.3)",
 							oracle.jdbc.driver,
 							*
 						</Import-Package>

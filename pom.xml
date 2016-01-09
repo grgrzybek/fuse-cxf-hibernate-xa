@@ -29,7 +29,7 @@
 	<name>hibernatetx :: Fuse CXF Hibernate XA</name>
 
 	<properties>
-		<jboss.fuse.bom.version>6.1.0.redhat-379</jboss.fuse.bom.version>
+		<jboss.fuse.bom.version>6.2.1.redhat-084</jboss.fuse.bom.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven-compiler-plugin-version>3.3</maven-compiler-plugin-version>
 		<maven-resources-plugin-version>2.5-redhat-1</maven-resources-plugin-version>
@@ -96,8 +96,31 @@
 			</plugins>
 		</pluginManagement>
 	</build>
-
+	<pluginRepositories>
+		<pluginRepository>
+			<id>fusesource.m2</id>
+			<name>FuseSource Repository</name>
+			<url>http://repo.fusesource.com/nexus/content/groups/public</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+		</pluginRepository>
+	</pluginRepositories>
 	<repositories>
+		<repository>
+			<id>fusesource.m2</id>
+			<name>FuseSource Repository</name>
+			<url>http://repo.fusesource.com/nexus/content/groups/public</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+		</repository>
 		<repository>
 			<id>fusesource.releases</id>
 			<name>FuseSource Release Repository</name>
@@ -113,6 +136,17 @@
 			<id>fusesource.ea</id>
 			<name>FuseSource Early Access Release Repository</name>
 			<url>https://repository.jboss.org/nexus/content/groups/ea/</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+		</repository>
+		<repository>
+			<id>maven.m2</id>
+			<name>Maven central Repository</name>
+			<url>http://repo1.maven.org/maven2</url>
 			<snapshots>
 				<enabled>false</enabled>
 			</snapshots>
