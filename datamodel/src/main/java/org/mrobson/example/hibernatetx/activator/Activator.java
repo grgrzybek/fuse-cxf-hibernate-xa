@@ -32,13 +32,16 @@ public class Activator implements BundleActivator {
         Bundle[] bundles = context.getBundles();                                                                                                                                           
         try{                                                                                                                                                                               
             for(Bundle b : bundles){                                                                                                                                                       
-                    if(b.getSymbolicName().equalsIgnoreCase("org.mrobson.example.hibernatetx.xa-datasource")) { // .toLowerCase().contains("xa-datasource")                                                                                                                
-                    	b.start();
-                        log.info("Activator Starting " + b.getSymbolicName());
+                    if(b.getSymbolicName().equalsIgnoreCase("org.hibernate.osgi")) {
+                    	if (b.getState() == Bundle.ACTIVE) {
+                            log.info(b.getSymbolicName() + " is active, stopping and starting");
+                    		b.stop();
+                    		b.start();
+                    	}
                     }
             }                                                                                                                                                                              
         } catch (BundleException var6) {                                                                                                                                                   
-        }                                                                                                                                                                                  
+        } 
     }                                                                                                                             
     public void stop(BundleContext context) throws Exception {}                                                                                                                                                                                    
 }

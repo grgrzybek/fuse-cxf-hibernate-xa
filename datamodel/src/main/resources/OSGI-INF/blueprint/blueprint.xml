@@ -16,6 +16,7 @@
  * limitations under the License.
 -->
 <blueprint default-activation="eager"
+		   default-timeout="20000"
            xmlns:jaxrs="http://cxf.apache.org/blueprint/jaxrs"
            xmlns:cxf="http://cxf.apache.org/blueprint/core"
            xmlns:camel="http://camel.apache.org/schema/blueprint"

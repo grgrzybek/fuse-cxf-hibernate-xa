@@ -69,11 +69,11 @@ public final class PersonTest extends BaseTest {
         }
         ObjectMapper mapper = new ObjectMapper();
 		Person p = mapper.readValue(response, Person.class);
-        Assert.assertTrue(response.contains(p.getFirstName()));
-        getAddedPersonTest(p.getId());
+		Assert.assertTrue(response.contains(p.getFirstName()));
+		getAddedPersonTest(p.getId());
     }
     
-    public void getAddedPersonTest(Long personId) throws Exception {
+    public void getAddedPersonTest(Integer personId) throws Exception {
         LOG.info("GET request to find Person by ID");
         HttpClient httpclient = new HttpClient();
         GetMethod get = new GetMethod(getBaseURL(PersonService.SERVICE_NAME) + "findById/" + personId);
@@ -88,6 +88,6 @@ public final class PersonTest extends BaseTest {
         } finally {
             get.releaseConnection();
         }
-        Assert.assertTrue(get.getResponseBodyAsString().contains(Long.toString(personId)));
+        Assert.assertTrue(get.getResponseBodyAsString().contains(Integer.toString(personId)));
     }
 }

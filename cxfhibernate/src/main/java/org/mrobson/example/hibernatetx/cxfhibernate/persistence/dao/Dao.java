@@ -25,5 +25,5 @@ import org.mrobson.example.hibernatetx.datamodel.Person;
  */
 public interface Dao {
 	public Person savePerson(Person ps);
-	public Person getPersonById(long id);
+	public Person getPersonById(Integer id);
 }

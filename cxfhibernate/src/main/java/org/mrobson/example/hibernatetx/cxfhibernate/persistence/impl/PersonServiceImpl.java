@@ -31,7 +31,7 @@ public class PersonServiceImpl extends BaseServiceImpl implements PersonService 
 		return getBaseDao().savePerson(ps);
 	}
 	
-	public Person getPersonByIdWS(long id) {
+	public Person getPersonByIdWS(Integer id) {
 		Person ps = getBaseDao().getPersonById(id);
 		if (ps != null) {
 			ps.getAddresses().size();

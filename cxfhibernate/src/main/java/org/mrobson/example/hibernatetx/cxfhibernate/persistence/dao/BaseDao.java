@@ -19,6 +19,7 @@ package org.mrobson.example.hibernatetx.cxfhibernate.persistence.dao;
 import javax.persistence.EntityManager;
 
 import org.apache.log4j.Logger;
+import org.mrobson.example.hibernatetx.datamodel.EntityCommons;
 import org.mrobson.example.hibernatetx.datamodel.Person;
 
 /**
@@ -44,7 +45,7 @@ public class BaseDao implements Dao {
 		return entity;
 	}
 
-	public Person getPersonById(long id) {
+	public Person getPersonById(Integer id) {
 		log.debug("Fidning: " + id);
 		Person entity = entityManager.find(Person.class, id);
 		return entity;

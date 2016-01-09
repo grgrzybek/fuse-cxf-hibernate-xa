@@ -86,7 +86,6 @@
 						</Import-Package>
 						<Export-Package>
 						</Export-Package>
-						<_removeheaders>Import-Service</_removeheaders>
 					</instructions>
 				</configuration>
 			</plugin>

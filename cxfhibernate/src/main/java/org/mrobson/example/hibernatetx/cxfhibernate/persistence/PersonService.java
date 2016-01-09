@@ -26,5 +26,5 @@ import org.mrobson.example.hibernatetx.datamodel.Person;
 public interface PersonService {
 	static final String SERVICE_NAME = "person";
 	public Person savePersonWS(Person ps);
-	public Person getPersonByIdWS(long id);
+	public Person getPersonByIdWS(Integer name);
 }

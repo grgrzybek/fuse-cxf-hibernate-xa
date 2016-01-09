@@ -26,9 +26,9 @@ import java.util.Date;
 
 public interface BasicEntity {
 
-	public Long getId();
+	public Integer getId();
 
-	public void setId(Long id);
+	public void setId(Integer id);
 
 	public Long getVersion();
 

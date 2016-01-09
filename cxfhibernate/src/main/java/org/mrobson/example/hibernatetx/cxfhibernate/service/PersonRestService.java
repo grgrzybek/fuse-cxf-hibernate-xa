@@ -91,7 +91,7 @@ public class PersonRestService {
     })
     public Person getPerson(@ApiParam(value = "ID of Customer to fetch", required = true) @PathParam("id") String id) throws ApplicationException {
     	LOG.info("Invoking getPerson with the id: {}", id);
-        long personId = Long.parseLong(id);
+        Integer personId = Integer.parseInt(id);
         Person ps = personService.getPersonByIdWS(personId);
 		if (ps == null) {
 			throw new ApplicationException("Could not find a person with id: " + personId + ".");

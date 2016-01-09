@@ -23,7 +23,7 @@ package org.mrobson.example.hibernatetx.cxfhibernate.persistence.rest.test;
  */
 public class BaseTest {
 	private static final String BASE_URI = ":8181/cxf/hibernatetx/";
-	private static final String hostName = "10.10.183.204";
+	private static final String hostName = "localhost";
 	public static String getBaseURL(String serviceName) {
 		return "http://" + hostName + BASE_URI  + serviceName + "/";
 	}

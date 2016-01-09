@@ -67,6 +67,7 @@
 				<extensions>true</extensions>
 				<configuration>
 					<instructions>
+						<Bundle-SymbolicName>org.mrobson.example.hibernatetx.datamodel;blueprint.timeout:=10000</Bundle-SymbolicName>
 <!-- 						<Bundle-Activator>org.mrobson.example.hibernatetx.activator.Activator</Bundle-Activator>						
  -->						<Import-Package>
 							javax.persistence;version="[2.0,2.1)",

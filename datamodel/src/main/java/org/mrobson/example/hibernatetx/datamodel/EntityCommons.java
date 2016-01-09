@@ -42,7 +42,7 @@ public abstract class EntityCommons implements BasicEntity, Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	protected Long id;
+	protected Integer id;
 	
 	@Version
 	@Column(nullable = false)
@@ -62,11 +62,11 @@ public abstract class EntityCommons implements BasicEntity, Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date lastChangedDate;
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
