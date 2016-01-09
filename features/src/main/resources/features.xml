@@ -18,16 +18,17 @@
  */
 -->
 <features name="hibernatetx-jpa-example-${project.version}" xmlns="http://karaf.apache.org/xmlns/features/v1.0.0">
-  <feature name="hibernate-jpa-example">
-	<feature>jpa</feature>
-    <feature>jndi</feature>
-    <feature>transaction</feature>
-    <feature>swagger</feature>
-    <feature>camel-blueprint</feature>
-    <feature>cxf-jaxrs</feature>
-   <feature>jpa-hibernate</feature>
-    <bundle start-level="90">mvn:org.mrobson.example.hibernatetx/xa-datasource/${project.version}</bundle>
-    <bundle start-level="95">mvn:org.mrobson.example.hibernatetx/datamodel/${project.version}</bundle>
-    <bundle start-level="100">mvn:org.mrobson.example.hibernatetx/cxfhibernate/${project.version}</bundle>
-  </feature>
+	<feature name="hibernate-jpa-example" version="${project.version}">
+		<feature>jpa</feature>
+		<feature>jndi</feature>
+		<feature>transaction</feature>
+		<feature>swagger</feature>
+		<feature>camel-blueprint</feature>
+		<feature>cxf-jaxrs</feature>
+		<feature>jpa-hibernate</feature>
+		<bundle start-level="60">wrap:mvn:com.oracle/ojdbc6/12.1.0.1</bundle>
+		<bundle start-level="90">mvn:org.mrobson.example.hibernatetx/xa-datasource/${project.version}</bundle>
+		<bundle start-level="95">mvn:org.mrobson.example.hibernatetx/datamodel/${project.version}</bundle>
+		<bundle start-level="100">mvn:org.mrobson.example.hibernatetx/cxfhibernate/${project.version}</bundle>
+	</feature>
 </features>
