@@ -33,8 +33,7 @@
                 interface="javax.sql.DataSource"
                 filter="(datasource.name=NonXA_DS)" availability="mandatory"/>
                 
-    <reference id="dataSourceXA"
+	<reference id="dataSourceXA"
                 interface="javax.sql.XADataSource"
                 filter="(datasource.name=Hibernate_XADS)" availability="mandatory"/>
-                               
 </blueprint>

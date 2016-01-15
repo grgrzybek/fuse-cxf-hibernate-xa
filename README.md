@@ -1,10 +1,10 @@
 ﻿CXF Hibernate XA: demonstrates RESTful web services with CXF and Hibernate Persistence with XA Transactions
-===============================================================================================
+===========================================================================================================
 Author: Matt Robson 
 
 Technologies: Fuse, OSGi, CXF, Hibernate, Blueprint, Karaf Features, Fuse BOM, Aries Auto Enlist XA Transactions, Swagger, JSON, ExceptionMapper 
 
-Product: Fuse 6.1 
+Product: Fuse 6.2.1
 
 Breakdown
 ---------
@@ -19,8 +19,8 @@ System Requirements
 Before building and running this quick start you need:
 
 * Maven 3.2 or higher
-* Java 1.7
-* JBoss Fuse 6.1
+* Java 1.7 or 1.8
+* JBoss Fuse 6.2.1
 
 Build and Deploy
 ----------------
@@ -43,21 +43,17 @@ Build and Deploy
 
 	mvn clean install
 
-5) start JBoss Fuse 6.1
+5) start JBoss Fuse 6.2.1
 
 	./fuse or ./start
 
-6) start Oracle database (refer to vendor documentation if you need to do this, for testing I recommend using Oracle XE)
+6) start Oracle database (refer to vendor documentation if you need to do this, for easy testing I recommend using Oracle XE)
 
 7) deploy Oracle JDBC driver
 
 Download the latest driver from Oracle and install it to your local maven repository (account required):
 
 	mvn install:install-file -Dfile=ojdbc6.jar -DgroupId=com.oracle -DartifactId=ojdbc6 -Dversion=12.1.0.1 -Dpackaging=jar
-
-From the Karaf console:
-
-	osgi:install -s wrap:mvn:com.oracle/ojdbc6/12.1.0.1
 
 8) add the features file
 
