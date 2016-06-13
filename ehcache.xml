@@ -11,9 +11,18 @@
         memoryStoreEvictionPolicy="LRU" statistics="true">
     </defaultCache>
  
-    <cache name="org.mrobson.example.camelhibernatejpa.datamodel.Person" maxEntriesLocalHeap="10000" eternal="false"
+    <cache name="org.mrobson.example.hibernatetx.datamodel.Person" maxEntriesLocalHeap="10000" eternal="false"
         timeToIdleSeconds="30" timeToLiveSeconds="45" statistics="true">
     </cache>
+    <cache name="org.mrobson.example.hibernatetx.datamodel.Person.address" maxEntriesLocalHeap="10000" eternal="false"
+        timeToIdleSeconds="30" timeToLiveSeconds="45" statistics="true">
+    </cache>
+    <cache name="org.mrobson.example.hibernatetx.datamodel.Address" maxEntriesLocalHeap="10000" eternal="false"
+        timeToIdleSeconds="30" timeToLiveSeconds="45" statistics="true">
+    </cache>
+    <!--cache name="org.mrobson.example.hibernatetx.datamodel.Addresses.person" maxEntriesLocalHeap="10000" eternal="false"
+        timeToIdleSeconds="30" timeToLiveSeconds="45" statistics="true">
+    </cache-->
  
     <cache name="org.hibernate.cache.internal.StandardQueryCache"
         maxEntriesLocalHeap="2000" eternal="false" timeToLiveSeconds="120" statistics="true">

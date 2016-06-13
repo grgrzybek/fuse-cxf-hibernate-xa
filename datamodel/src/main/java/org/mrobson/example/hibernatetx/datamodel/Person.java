@@ -24,6 +24,9 @@ import javax.persistence.Column;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Cacheable;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 /**
  * @author <a href="mailto:mrobson@redhat.com">Matthew Robson</a>
@@ -33,6 +36,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = Person.TABLE_NAME)
+@Cacheable
+@Cache(region="org.mrobson.example.hibernatetx.datamodel.Person", usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Person extends EntityCommons {
 	
 	private static final long serialVersionUID = 7686378197745250332L;
@@ -47,6 +52,7 @@ public class Person extends EntityCommons {
 	private String country;
 
 	@OneToMany(mappedBy = "person", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@Cache(region="org.mrobson.example.hibernatetx.datamodel.Person.address", usage = CacheConcurrencyStrategy.READ_WRITE)
 	private Set<Address> addresses = new HashSet<Address>();
 	
 	public String getFirstName() {

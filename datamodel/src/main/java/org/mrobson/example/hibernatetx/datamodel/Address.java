@@ -22,6 +22,9 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Cacheable;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -32,6 +35,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  */
 @Entity
 @Table(name = Address.TABLE_NAME)
+@Cacheable
+@Cache(region="org.mrobson.example.hibernatetx.datamodel.Address", usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Address extends EntityCommons {
 
 	private static final long serialVersionUID = 8584789151600244837L;
@@ -42,6 +47,7 @@ public class Address extends EntityCommons {
 
 	@ManyToOne(optional = false, fetch = FetchType.LAZY)
 	@JoinColumn(name = "person_id", nullable = false, updatable = false)
+	//@Cache(region="org.mrobson.example.hibernatetx.datamodel.Address.person", usage = CacheConcurrencyStrategy.READ_WRITE)
 	private Person person;
 
 	
