@@ -37,23 +37,29 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
-			<!--version>4.2.9.Final</version-->
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-osgi</artifactId>
-			<!--version>4.2.9.Final</version-->
+			<scope>provided</scope>
 		</dependency>
 			<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-envers</artifactId>
-			<!--version>4.2.9.Final</version-->
+			<scope>provided</scope>
 		</dependency>
 			<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
-			<!--version>4.2.9.Final</version-->
+			<scope>provided</scope>
 		</dependency>
+                <dependency>
+                        <groupId>net.sf.ehcache</groupId>
+                        <artifactId>ehcache-core</artifactId>
+                        <scope>provided</scope>
+                        <version>2.6.9</version>
+                </dependency>
 	</dependencies>
 	<build>
 		<plugins>
@@ -72,8 +78,10 @@
 							org.hibernate;version="[4.2,4.3)",
 							org.hibernate.proxy;version="[4.2,4.3)",
 							javassist.util.proxy,
-							org.hibernate.ejb;version="[4.2,5)"
-							org.hibernate.proxy;version="[4.2,4.3)",
+							org.hibernate.ejb;version="[4.2,5)",
+							net.sf.ehcache,
+							org.hibernate.cache.ehcache,
+							org.hibernate.service,
 							<!--oracle.jdbc.driver,-->
 							*
 						</Import-Package>

@@ -29,8 +29,8 @@
 	<name>hibernatetx :: Fuse CXF Hibernate XA</name>
 
 	<properties>
-		<jboss.fuse.bom.version>6.2.1.redhat-084</jboss.fuse.bom.version>
-		<fuse.fabric8.version>1.2.0.redhat-621084</fuse.fabric8.version>
+		<jboss.fuse.bom.version>6.2.1.redhat-107</jboss.fuse.bom.version>
+		<fuse.fabric8.version>1.2.0.redhat-621107</fuse.fabric8.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven-compiler-plugin-version>3.3</maven-compiler-plugin-version>
 		<maven-resources-plugin-version>2.5-redhat-1</maven-resources-plugin-version>
@@ -116,6 +116,17 @@
 		</pluginRepository>
 	</pluginRepositories>
 	<repositories>
+                <repository>                                                                                                                                                                                                        
+                        <id>brew</id>                                                                                                                                                                                               
+                        <name>brew</name>                                                                                                                                                                                           
+                        <url>http://download.eng.bos.redhat.com/brewroot/repos/jb-fsw-6.2-build/latest/maven</url>                                                                                                                  
+                        <snapshots>                                                                                                                                                                                                 
+                                <enabled>false</enabled>                                                                                                                                                                            
+                        </snapshots>                                                                                                                                                                                                
+                        <releases>                                                                                                                                                                                                  
+                                <enabled>true</enabled>                                                                                                                                                                             
+                        </releases>                                                                                                                                                                                                 
+                </repository>
 		<repository>
 			<id>fusesource.m2</id>
 			<name>FuseSource Repository</name>
