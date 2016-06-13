@@ -1,14 +1,14 @@
-﻿CXF Hibernate XA: demonstrates RESTful web services with CXF and Hibernate Persistence with XA Transactions
-===========================================================================================================
+﻿CXF Hibernate XA: demonstrates RESTful web services with CXF, Hibernate Persistence and 2LC EhCache with XA Transactions
+========================================================================================================================
 Author: Matt Robson 
 
-Technologies: Fuse, OSGi, CXF, Hibernate, Blueprint, Karaf Features, Fuse BOM, Aries Auto Enlist XA Transactions, Swagger, JSON, ExceptionMapper 
+Technologies: Fuse, OSGi, CXF, Hibernate, EhCache, Blueprint, Karaf Features, Fuse BOM, Aries Auto Enlist XA Transactions, Swagger, JSON, ExceptionMapper 
 
-Product: Fuse 6.2.1
+Product: Fuse 6.2.1 R2
 
 Breakdown
 ---------
-This code example shows how to leverage RESTful (JAX-RS) web services using CXF and persist Entities using Hibernate. It demonstrates how to wire an EntityManager to a JPA Context and on to a Service. It also makes use of Aries Auto Enlistment for XA Transactions.  Other interesting aspects include the use of the Fuse BOM, Karaf Features, Blueprint Placeholders, Swagger and  ExceptionMapper.
+This code example shows how to leverage RESTful (JAX-RS) web services using CXF and persist Entities using Hibernate and retriec them with a 2LC using EhCache. It demonstrates how to wire an EntityManager to a JPA Context and on to a Service. It also makes use of Aries Auto Enlistment for XA Transactions.  Other interesting aspects include the use of the Fuse BOM, Karaf Features, Blueprint Placeholders, Swagger and  ExceptionMapper.
 
 For more information see:
 
@@ -20,7 +20,7 @@ Before building and running this quick start you need:
 
 * Maven 3.2 or higher
 * Java 1.7 or 1.8
-* JBoss Fuse 6.2.1
+* JBoss Fuse 6.2.1 R2
 
 Build and Deploy
 ----------------
@@ -33,29 +33,15 @@ Build and Deploy
 
 	cd fuse-cxf-hibernate-xa
 
-3) update your username and password
-
-	vi xa-datasource/src/main/resources/OSGI-INF/blueprint/datasource.xml
-	<cm:property name="datasource.username" value="username" />
-	<cm:property name="datasource.password" value="password" />
-
-4) build
+3) build
 
 	mvn clean install
 
-5) start JBoss Fuse 6.2.1
+4) start JBoss Fuse 6.2.1 R2
 
 	./fuse or ./start
 
-6) start Oracle database (refer to vendor documentation if you need to do this, for easy testing I recommend using Oracle XE)
-
-7) deploy Oracle JDBC driver
-
-Download the latest driver from Oracle and install it to your local maven repository (account required):
-
-	mvn install:install-file -Dfile=ojdbc6.jar -DgroupId=com.oracle -DartifactId=ojdbc6 -Dversion=12.1.0.1 -Dpackaging=jar
-
-8) add the features file
+5) add the features file
 
 	features:addurl mvn:org.mrobson.example.hibernatetx/features/1.0-SNAPSHOT/xml/features
 
@@ -85,7 +71,7 @@ To view the WADL, you can use the following address:
 
 	http://localhost:8181/cxf/hibernatetx/?_wadl
 
-As a quick test, you can use the GET operations directly from the browser:
+As a quick test, you can use the GET operations directly from the browser, this will result no SQL against the DB until a cache eviction:
 
 	http://localhost:8181/cxf/hibernatetx/person/findById/1
 
@@ -130,42 +116,3 @@ To remove the bundle we installed, you can simply uninstall the feature:
 1) uninstall the feature
 
 	features:uninstall hibernate-jpa-example
-
-Fabric Install
---------------
-
-To install this example into a fabric environment, ensure the build code is in a maven repository accessible by your fabric:
-
-1) Create a new profile with karaf as the parent
-
-	profile-create --parents karaf --version 77.02 hibernate-cxfxa
-
-2) Add the feature repositories to the profile
-
-	profile-edit --repositories mvn:org.mrobson.example.hibernatetx/features/1.0-SNAPSHOT/xml/features hibernate-cxfxa 77.02
-	profile-edit --repositories mvn:org.jboss.fuse/jboss-fuse/6.1.0.redhat-379/xml/features hibernate-cxfxa 77.02
-
-3) Add the feature to the profile
-	
-	profile-edit --features hibernate-jpa-example hibernate-cxfxa 77.02
-
-4) Add the JDBC Driver Bundle to the profile
-
-	profile-edit --bundles wrap:mvn:com.oracle/ojdbc6/12.1.0.1 hibernate-cxfxa 77.02
-
-5) Assign to profile to a container
-
-	container-add-profile fuse-services1 hibernate-cxfxa
-
-6) Verify deployment
-
-	JBossFuse:admin@root> container-list 
-	[id]                           [version] [connected] [profiles]                                         [provision status]
-	fuse-services2                 77.02     true        default, hibernate-cxfxa                           success
-
-	Fabric8:admin@fuse-services2> osgi:list
-	[1942] [Active     ] [Created     ] [   60] hibernatetx :: CXF Hibernate (1.0.0.SNAPSHOT)
-	[1943] [Active     ] [Created     ] [   60] hibernatetx :: Datamodel (1.0.0.SNAPSHOT)
-	[1944] [Active     ] [Created     ] [   60] hibernatetx :: XA-Datasource (1.0.0.SNAPSHOT)
-
-7) Done!
